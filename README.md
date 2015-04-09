@@ -1,3 +1,4 @@
+
 #School Project
 Steps for using git in the terminal:
 * git init 
@@ -6,8 +7,12 @@ Steps for using git in the terminal:
 * git status
 * git commit -m "initial commit"
 
-##Next Steps
+
 
 * git commit -a -m "updated"
 * git push -u origin master
+
+
+#What Would Bib Do?
+##Advanced Web Design Final Project
 
