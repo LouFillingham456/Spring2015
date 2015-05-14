@@ -20,12 +20,13 @@ $background-transition: background .5s linear;
 }
 
 $quicksand: font-family 'Quicksand-Regular';
+$quicksand-bold: font-family 'Quicksand-Bold';
 $bodedo: font-family 'HVDBodedo';
 
-@mixin declare-font-face($font-facename, $font-filename, $font-weight : normal, $font-style :normal, $font-stretch : normal) {
+@mixin declare-font-face($font-facename, $font-filename, $font-ext : "otf", $font-weight : normal, $font-style :normal, $font-stretch : normal) {
     @font-face {
     font-family: '#{$font-facename}';
-    src: url('#{$font-filename}.otf');
+    src: url('#{$font-filename}.#{$font-ext}');
     font-weight: $font-weight;
     font-style: $font-style;
     font-stretch: $font-stretch;
@@ -34,7 +35,7 @@ $bodedo: font-family 'HVDBodedo';
 
 @include declare-font-face('Quicksand-Bold', '../fonts/Quicksand-Bold');
 @include declare-font-face('Quicksand-Regular', '../fonts/Quicksand-Regular');
-@include declare-font-face('HVDBodedo', '../fonts/HVDBodedo');
+@include declare-font-face('HVDBodedo', '../fonts/HVDBodedo', 'ttf');
 
 * {
     box-sizing: border-box;
@@ -69,17 +70,27 @@ body {
         }
         &:hover:after {
             content: attr(alt);
-            position: relative;
-            left: -25%;
+            display: block;
+            position: absolute;
+            top: 4em;;
+            background-color: white;
+            padding: .5em;
+            border-radius: $border-corners;
             color: black;
+            font-family: $quicksand-bold;
             text-align: center;
-            top: 1em;
+            margin-left: auto;
+            margin-right: auto;
         }
         img {
             width: 100%;
             display: block;
             border-radius: 50%;
             background-color: #383838;
+            border: 1px solid white;
+            &:hover {
+                border: 1px solid red;
+            }
         }
     }
 }
@@ -181,9 +192,12 @@ p {
 }
 
 .index_page {
-    background: url("../img/background_index.jpg");
+    // background: url("../img/background_index.jpg");
+    background: url("../img/background_index_scene.png") bottom,
+                url("../img/background_paper_texture.jpg") bottom;
     background-size: cover;
     background-attachment: fixed;
+    height: 100%;
 }
 
 .city {
@@ -191,24 +205,28 @@ p {
     background-size: cover;
     background-attachment: fixed;
     transition: $background-transition;
+    min-height: 100%;
 }
 .forest {
     background: url("../img/backgrounds_forest.jpg");
     background-size: cover;
     background-attachment: fixed;
     transition: $background-transition;
+    min-height: 100%;
 }
 .beach {
     background: url("../img/backgrounds_beach.jpg");
     background-size: cover;
     background-attachment: fixed;
     transition: $background-transition;
+    min-height: 100%;
 }
 
 .character_page {
     background: url("../img/background_character_page.jpg");
     background-size: cover;
     background-attachment: fixed;
+    height: 100%;
 
     h1 {
         margin-top: 0;
@@ -231,6 +249,7 @@ p {
 .character_content {
     width: 40em;
     margin: 0 auto;
+    margin-bottom: 4em;
 
     img {
         float: left;
@@ -240,11 +259,27 @@ p {
 .character_groups {
     padding-bottom: 3em;
     h2 {
-        font-family: $quicksand;
+        font-family: $quicksand-bold;
         font-weight: normal;
      }
     p {
     font-family: $quicksand;
+    }
+
+    img {
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+    }
+
+    a {
+        color: black;
+        font-family: $quicksand-bold;
+    }
+}
+
+.character_paragraphs {
+    p {
+
     }
 }
 
@@ -294,8 +329,8 @@ p {
 }
 
 .theEnd {
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin-top: 1em;
+    margin-bottom: .5em;
     font-size: 2em;
     font-weight: 700;
     text-align: center;
@@ -312,6 +347,7 @@ p {
     padding-top: .5vh;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 2em;
 }
 
 .bubbleWrap {
@@ -343,6 +379,7 @@ p {
 .bubbleDescription {
     display: none;
     width: 80%;
+    padding-bottom: 4em;
     margin-left: auto;
     margin-right: auto;
     background-color: rgba(255, 255, 255, .8);
@@ -353,7 +390,7 @@ p {
         text-align: center;
         margin-top: 0;
         margin-bottom: .5em;
-        font-family: $quicksand;
+        font-family: $quicksand-bold;
         font-weight: normal;
         padding-top: .5em;
     }
@@ -377,6 +414,7 @@ p {
     padding: 1em;
     text-align: center;
     line-height: 2em;
+    font-family: $quicksand-bold;
 }
 
 
@@ -407,10 +445,9 @@ p {
 @media (max-width: 840px) {
 
     .nav {
-        top: 10px;
-        right: 10px;
+
         a {
-            width: 30px;
+            width: 50px;
         }
     }
 
@@ -441,6 +478,12 @@ p {
         img {
             float: center;
             text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            padding-top: 4em;
+            padding-bottom: 1em;
         }
     }
 
@@ -482,6 +525,16 @@ p {
 
 @media (max-width: 625px) {
 
+    .nav {
+        margin-right: auto;
+        margin-left: auto;
+        right: 10%;
+
+        a {
+            width: 50px;
+        }
+    }
+
     .bubbleContainer {
         width: 100vw;
     }
@@ -508,17 +561,34 @@ p {
 
         h1 {
             margin: 0;
+            padding-top: 4em;
+            padding-bottom: 1em;
         }
     }
 
     .character_groups {
         margin-right: 0;
+
+        p {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3em;
+            background-color: white;
+            padding: 2em;
+            border-radius: $border-corners;
+            box-shadow: 1px 1px 5px #888;
+            line-height: 1.5em;
+            opacity: .9;
+        }
     }
 
     .character_paragraphs {
         width: 90%;
         display: block;
         padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
 
 }

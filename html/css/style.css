@@ -12,7 +12,7 @@
   font-stretch: normal; }
 @font-face {
   font-family: "HVDBodedo";
-  src: url("../fonts/HVDBodedo.otf");
+  src: url("../fonts/HVDBodedo.ttf");
   font-weight: normal;
   font-style: normal;
   font-stretch: normal; }
@@ -45,16 +45,25 @@ body {
       margin-left: 0; }
     .nav a:hover:after {
       content: attr(alt);
-      position: relative;
-      left: -25%;
+      display: block;
+      position: absolute;
+      top: 4em;
+      background-color: white;
+      padding: .5em;
+      border-radius: 3px;
       color: black;
+      font-family: font-family "Quicksand-Bold";
       text-align: center;
-      top: 1em; }
+      margin-left: auto;
+      margin-right: auto; }
     .nav a img {
       width: 100%;
       display: block;
       border-radius: 50%;
-      background-color: #383838; }
+      background-color: #383838;
+      border: 1px solid white; }
+      .nav a img:hover {
+        border: 1px solid red; }
 
 .titleContainer {
   max-width: 500px;
@@ -145,32 +154,37 @@ p {
   opacity: .9; }
 
 .index_page {
-  background: url("../img/background_index.jpg");
+  background: url("../img/background_index_scene.png") bottom, url("../img/background_paper_texture.jpg") bottom;
   background-size: cover;
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  height: 100%; }
 
 .city {
   background: url("../img/backgrounds_city.jpg");
   background-size: cover;
   background-attachment: fixed;
-  transition: background 0.5s linear; }
+  transition: background 0.5s linear;
+  min-height: 100%; }
 
 .forest {
   background: url("../img/backgrounds_forest.jpg");
   background-size: cover;
   background-attachment: fixed;
-  transition: background 0.5s linear; }
+  transition: background 0.5s linear;
+  min-height: 100%; }
 
 .beach {
   background: url("../img/backgrounds_beach.jpg");
   background-size: cover;
   background-attachment: fixed;
-  transition: background 0.5s linear; }
+  transition: background 0.5s linear;
+  min-height: 100%; }
 
 .character_page {
   background: url("../img/background_character_page.jpg");
   background-size: cover;
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  height: 100%; }
   .character_page h1 {
     margin-top: 0;
     text-align: center;
@@ -185,17 +199,24 @@ p {
 
 .character_content {
   width: 40em;
-  margin: 0 auto; }
+  margin: 0 auto;
+  margin-bottom: 4em; }
   .character_content img {
     float: left; }
 
 .character_groups {
   padding-bottom: 3em; }
   .character_groups h2 {
-    font-family: font-family "Quicksand-Regular";
+    font-family: font-family "Quicksand-Bold";
     font-weight: normal; }
   .character_groups p {
     font-family: font-family "Quicksand-Regular"; }
+  .character_groups img {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em; }
+  .character_groups a {
+    color: black;
+    font-family: font-family "Quicksand-Bold"; }
 
 .iconLink {
   display: inline-block;
@@ -241,8 +262,8 @@ p {
   -o-transform: rotateY(180deg); }
 
 .theEnd {
-  margin-top: 2em;
-  margin-bottom: 2em;
+  margin-top: 1em;
+  margin-bottom: .5em;
   font-size: 2em;
   font-weight: 700;
   text-align: center;
@@ -256,7 +277,8 @@ p {
   width: 70vw;
   padding-top: .5vh;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  padding-bottom: 2em; }
 
 .bubbleWrap {
   display: inline-block;
@@ -281,6 +303,7 @@ p {
 .bubbleDescription {
   display: none;
   width: 80%;
+  padding-bottom: 4em;
   margin-left: auto;
   margin-right: auto;
   background-color: rgba(255, 255, 255, 0.8);
@@ -291,7 +314,7 @@ p {
     text-align: center;
     margin-top: 0;
     margin-bottom: .5em;
-    font-family: font-family "Quicksand-Regular";
+    font-family: font-family "Quicksand-Bold";
     font-weight: normal;
     padding-top: .5em; }
   .bubbleDescription p {
@@ -309,7 +332,8 @@ p {
 .pageLink {
   padding: 1em;
   text-align: center;
-  line-height: 2em; }
+  line-height: 2em;
+  font-family: font-family "Quicksand-Bold"; }
 
 @media (max-width: 1400px) {
   .city {
@@ -327,11 +351,8 @@ p {
     background-size: cover;
     background-attachment: fixed; } }
 @media (max-width: 840px) {
-  .nav {
-    top: 10px;
-    right: 10px; }
-    .nav a {
-      width: 30px; }
+  .nav a {
+    width: 50px; }
 
   .page {
     padding: 50px 0; }
@@ -357,6 +378,10 @@ p {
     .character_content img {
       float: center;
       text-align: center; }
+    .character_content h1 {
+      margin: 0;
+      padding-top: 4em;
+      padding-bottom: 1em; }
 
   .character_paragraphs {
     width: 28em;
@@ -382,6 +407,13 @@ p {
     .character_groups .dialog {
       margin-top: 0; } }
 @media (max-width: 840px) and (max-width: 625px) {
+  .nav {
+    margin-right: auto;
+    margin-left: auto;
+    right: 10%; }
+    .nav a {
+      width: 50px; }
+
   .bubbleContainer {
     width: 100vw; }
 
@@ -400,14 +432,29 @@ p {
     width: 100%;
     margin-right: 0; }
     .character_content h1 {
-      margin: 0; }
+      margin: 0;
+      padding-top: 4em;
+      padding-bottom: 1em; }
 
   .character_groups {
     margin-right: 0; }
+    .character_groups p {
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 3em;
+      background-color: white;
+      padding: 2em;
+      border-radius: 3px;
+      box-shadow: 1px 1px 5px #888;
+      line-height: 1.5em;
+      opacity: .9; }
 
   .character_paragraphs {
     width: 90%;
     display: block;
-    padding-right: 0; } }
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto; } }
 
 /*# sourceMappingURL=style.css.map */
